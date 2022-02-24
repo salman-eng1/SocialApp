@@ -1,3 +1,4 @@
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/layouts/social_app/cubit/cubit.dart';
 import 'package:social_app/layouts/social_app/cubit/states.dart';
 import 'package:social_app/models/social_app/social_user_model.dart';
+import 'package:social_app/modules/social-app/chat-details/chat_details_screen.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class ChatsScreen extends StatelessWidget {
@@ -19,7 +21,7 @@ class ChatsScreen extends StatelessWidget {
           condition: SocialCubit.get(context).users.length>0,
           builder: (BuildContext context) =>ListView.separated(
               physics: BouncingScrollPhysics(),
-              itemBuilder: (context,index)=>buildChatItem(SocialCubit.get(context).users[index]),
+              itemBuilder: (context,index)=>buildChatItem(SocialCubit.get(context).users[index],context),
               separatorBuilder: (context,index)=>myDivider(),
               itemCount: SocialCubit.get(context).users.length,
           ), fallback: (BuildContext context)=>Center(child: CircularProgressIndicator()),
@@ -29,8 +31,11 @@ class ChatsScreen extends StatelessWidget {
     );
 
   }
-  Widget buildChatItem(SocialUserModel model)=>  InkWell(
+  Widget buildChatItem(SocialUserModel model,context)=>  InkWell(
     onTap: (){
+      navigateTo(context, ChatDetailsScreen(
+        userModel: model,
+      ) );
 
     },
     child: Padding(

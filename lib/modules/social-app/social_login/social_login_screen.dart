@@ -31,7 +31,6 @@ class SocialLoginScreen extends StatelessWidget {
                     .then((value){
                       navigateAndFinish(context, SocialLayout());
                 }).catchError((error){
-
                 });
               }
 

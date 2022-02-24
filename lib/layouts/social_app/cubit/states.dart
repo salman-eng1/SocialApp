@@ -87,3 +87,9 @@ class SocialGetLikesErrorState extends SocialStates
   final String error ;
   SocialGetLikesErrorState(this.error);
 }
+
+class SocialSendMessageSuccessState extends SocialStates{}
+class SocialSendMessageErrorState extends SocialStates{}
+class SocialGetMessageSuccessState extends SocialStates{}
+// there is no need for error state because data transmission will use stream tech
+

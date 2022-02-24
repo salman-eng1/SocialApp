@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/modules/social-app/new-post/new_post_screen.dart';
 import 'package:social_app/shared/components/components.dart';
+import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/styles/IconBroken.dart';
 
 import 'cubit/cubit.dart';
@@ -31,6 +32,12 @@ class SocialLayout extends StatelessWidget {
               IconButton(
                 onPressed: (){},
                 icon: Icon(IconBroken.Search),
+              ),
+              IconButton(
+                onPressed: (){
+                  signOut(context);
+                },
+                icon: Icon(IconBroken.Logout),
               ),
             ],
           ),

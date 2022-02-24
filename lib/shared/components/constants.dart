@@ -12,11 +12,14 @@ import 'package:social_app/shared/network/local/cache_helper.dart';
 import 'components.dart';
 
 void signOut(context){
-  CacheHelper.removeData(key: 'token')!.then((value){
+  CacheHelper.removeData(key: 'uId')!.then((value){
     if(value){
       navigateAndFinish(context, SocialLoginScreen());
     }
-  });
+  }
+  );
+  print(uId);
+
 }
 
 void printFullText(String text)
@@ -25,5 +28,4 @@ void printFullText(String text)
   pattern.allMatches(text).forEach((match)=>print(match.group(0)));
 }
 
-String? token='';
 String? uId='';
